@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="todoModule">
+<head>
+  <title><%= title %></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css"/>
+  <link rel="stylesheet" href="/stylesheets/bootstrap-theme.css"/>
+  <link rel="stylesheet" href="/stylesheets/index/index.css"/>
+  <script src="/javascripts/angular.js"></script>
+</head>
+<body ng-controller="todoController">
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>部门工作安排<span class="label label-info">{{todos.length}}</span></h1>
+    </div>
+
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="name">姓名:</label>
+        <input type="text" class="form-control" id="name" ng-model="formData.name">
+      </div>
+      <div class="form-group">
+        <label for="desc">描述:</label>
+        <input type="text" class="form-control" id="desc" ng-model="formData.text">
+      </div>
+      <div class="form-group">
+        <label for="status">状态:</label>
+        <input type="text" class="form-control" id="status" ng-model="formData.status">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" ng-click="createTodo()">增加</button>
+      </div>
+
+    </form>
+
+    <h1>计划中<small class="label label-info">pending</small></h1>
+    <% include partials/table1.html  %>
+
+    <h1>进行中<small class="label label-info">doing</small></h1>
+    <% include partials/table2.html %>
+
+    <h1>验证中<small class="label label-info">validating</small></h1>
+    <% include partials/table3.html %>
+
+    <h1>已完成<small class="label label-info">finished</small></h1>
+    <% include partials/table4.html %>
+
+
+  </div>
+</body>
+<script src="/javascripts/todo.js"></script>
+<script src="/javascripts/service/todoService.js"></script>
+<script src="/javascripts/controller/todoController.js"></script>
+</html>
